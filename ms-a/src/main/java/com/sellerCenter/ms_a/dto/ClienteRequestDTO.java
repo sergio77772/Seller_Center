@@ -16,7 +16,7 @@ public class ClienteRequestDTO {
 
     @NotNull(message = "La edad es obligatoria")
     @Min(value = 0, message = "La edad no puede ser negativa")
-    @Max(value = 150, message = "La edad no parece válida")
+    @Max(value = 150, message = "La edad no parece valida")
     private Integer edad;
 
     @NotNull(message = "La fecha de nacimiento es obligatoria")
