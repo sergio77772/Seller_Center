@@ -8,7 +8,6 @@ import com.sellerCenter.ms_a.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,7 +17,7 @@ public class ClienteServiceImpl implements ClienteService {
     private final ClienteRepository clienteRepository;
 
     @Override
-    public ClienteResponseDTO crear(ClienteRequestDTO dto) {
+    public ClienteResponseDTO create(ClienteRequestDTO dto) {
         Cliente cliente = new Cliente();
         cliente.setNombre(dto.getNombre());
         cliente.setApellido(dto.getApellido());
@@ -26,11 +25,11 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setFechaNacimiento(dto.getFechaNacimiento());
 
         Cliente guardado = clienteRepository.save(cliente);
-        return mapToResponse(guardado);
+        return toResponse(guardado);
     }
 
     @Override
-    public KpiResponseDTO obtenerKpi() {
+    public KpiResponseDTO getKpi() {
         List<Cliente> clientes = clienteRepository.findAll();
 
         double promedio = clientes.stream()
@@ -50,14 +49,14 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteResponseDTO> listarTodos() {
+    public List<ClienteResponseDTO> listAll() {
         return clienteRepository.findAll()
                 .stream()
-                .map(this::mapToResponse)
+                .map(this::toResponse)
                 .toList();
     }
 
-    private ClienteResponseDTO mapToResponse(Cliente cliente) {
+    private ClienteResponseDTO toResponse(Cliente cliente) {
         ClienteResponseDTO response = new ClienteResponseDTO();
         response.setId(cliente.getId());
         response.setNombre(cliente.getNombre());
@@ -65,8 +64,7 @@ public class ClienteServiceImpl implements ClienteService {
         response.setEdad(cliente.getEdad());
         response.setFechaNacimiento(cliente.getFechaNacimiento());
         response.setFechaProbableFallecimiento(
-                cliente.getFechaNacimiento().plusYears(80)
-        );
+                cliente.getFechaNacimiento().plusYears(80));
         return response;
     }
 }

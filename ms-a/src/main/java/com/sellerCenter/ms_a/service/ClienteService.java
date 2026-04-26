@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface ClienteService {
 
-    ClienteResponseDTO crear(ClienteRequestDTO dto);
-    KpiResponseDTO obtenerKpi();
-    List<ClienteResponseDTO> listarTodos();
+    ClienteResponseDTO create(ClienteRequestDTO dto);
+
+    KpiResponseDTO getKpi();
+
+    List<ClienteResponseDTO> listAll();
 }

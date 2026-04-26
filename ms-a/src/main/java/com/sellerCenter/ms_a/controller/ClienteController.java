@@ -24,20 +24,20 @@ public class ClienteController {
 
     @PostMapping
     @Operation(summary = "Crear un nuevo cliente")
-    public ResponseEntity<ClienteResponseDTO> crear(@Valid @RequestBody ClienteRequestDTO dto) {
-        ClienteResponseDTO response = clienteService.crear(dto);
+    public ResponseEntity<ClienteResponseDTO> create(@Valid @RequestBody ClienteRequestDTO dto) {
+        ClienteResponseDTO response = clienteService.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/kpi")
     @Operation(summary = "Obtener promedio y desviacion estandar de edades")
-    public ResponseEntity<KpiResponseDTO> obtenerKpi() {
-        return ResponseEntity.ok(clienteService.obtenerKpi());
+    public ResponseEntity<KpiResponseDTO> getKpi() {
+        return ResponseEntity.ok(clienteService.getKpi());
     }
 
     @GetMapping
     @Operation(summary = "Listar todos los clientes con fecha probable de fallecimiento")
-    public ResponseEntity<List<ClienteResponseDTO>> listarTodos() {
-        return ResponseEntity.ok(clienteService.listarTodos());
+    public ResponseEntity<List<ClienteResponseDTO>> listAll() {
+        return ResponseEntity.ok(clienteService.listAll());
     }
 }
