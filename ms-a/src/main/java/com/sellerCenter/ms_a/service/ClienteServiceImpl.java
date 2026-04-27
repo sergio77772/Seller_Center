@@ -6,10 +6,12 @@ import com.sellerCenter.ms_a.dto.KpiResponseDTO;
 import com.sellerCenter.ms_a.model.Cliente;
 import com.sellerCenter.ms_a.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ClienteServiceImpl implements ClienteService {
@@ -18,6 +20,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteResponseDTO create(ClienteRequestDTO dto) {
+        log.info("Creando cliente: {} {}", dto.getNombre(), dto.getApellido());
         Cliente cliente = new Cliente();
         cliente.setNombre(dto.getNombre());
         cliente.setApellido(dto.getApellido());
@@ -25,11 +28,13 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setFechaNacimiento(dto.getFechaNacimiento());
 
         Cliente guardado = clienteRepository.save(cliente);
+        log.info("Cliente creado con id: {}", guardado.getId());
         return toResponse(guardado);
     }
 
     @Override
     public KpiResponseDTO getKpi() {
+        log.info("Calculando KPI de clientes");
         List<Cliente> clientes = clienteRepository.findAll();
 
         double promedio = clientes.stream()
@@ -42,6 +47,8 @@ public class ClienteServiceImpl implements ClienteService {
                 .average()
                 .orElse(0.0));
 
+        log.info("KPI calculado - promedio: {}, desviacion: {}", promedio, desviacion);
+
         KpiResponseDTO kpi = new KpiResponseDTO();
         kpi.setPromedioEdad(promedio);
         kpi.setDesviacionEstandar(desviacion);
@@ -50,10 +57,13 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<ClienteResponseDTO> listAll() {
-        return clienteRepository.findAll()
+        log.info("Listando todos los clientes");
+        List<ClienteResponseDTO> clientes = clienteRepository.findAll()
                 .stream()
                 .map(this::toResponse)
                 .toList();
+        log.info("Se encontraron {} clientes", clientes.size());
+        return clientes;
     }
 
     private ClienteResponseDTO toResponse(Cliente cliente) {
