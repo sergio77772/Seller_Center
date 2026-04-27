@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/frontend'
+      - '--build-arg'
+      - 'VITE_BFF_URL=https://ms-b-150317434723.us-central1.run.app'
+      - '.'
+images:
+  - 'gcr.io/$PROJECT_ID/frontend'
