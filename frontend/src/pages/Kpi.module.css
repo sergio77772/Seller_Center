@@ -1,0 +1,42 @@
+.container {
+    max-width: 480px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+.card {
+    background-color: #f0f4ff;
+    border: 1px solid #c7d7f9;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.stat {
+    font-size: 1rem;
+    color: #374151;
+}
+
+.statValue {
+    font-weight: 600;
+    color: #1a73e8;
+}
+
+.loading {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.error {
+    padding: 0.75rem 1rem;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-radius: 6px;
+}

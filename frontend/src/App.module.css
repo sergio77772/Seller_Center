@@ -1,0 +1,30 @@
+.nav {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    gap: 1.5rem;
+    background-color: #f8f9fa;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.navLink:hover {
+    color: #1a73e8;
+}
+
+.navLinkActive {
+    color: #1a73e8;
+    font-weight: 600;
+    border-bottom: 2px solid #1a73e8;
+}
+
+.content {
+    padding: 2rem;
+}
