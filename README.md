@@ -149,6 +149,7 @@ El BFF expone los mismos endpoints bajo `/bff/clientes`.
 - **Manejo de errores centralizado**: `GlobalExceptionHandler` en Spring Boot captura excepciones y devuelve respuestas estructuradas sin exponer stacktraces.
 - **Variables de entorno**: ninguna credencial está hardcodeada. Se usan `.env` con `.env.example` como guía en los tres componentes.
 - **CSS Modules**: los estilos del frontend están encapsulados por componente para evitar colisiones de clases globales.
+- **Campo `edad` persistido**: el challenge especifica `edad` como campo del modelo, por lo que se almacena en la base de datos. Se asume que el dato es provisto por el cliente al momento del registro. En un sistema productivo, `edad` sería un campo derivado calculado en runtime desde `fechaNacimiento` para evitar que se vuelva inconsistente con el tiempo.
 - **Logs**: logging con SLF4J (`@Slf4j`) en MS-A y Morgan en MS-B para observabilidad del flujo.
 - **Docker multi-stage builds**: los Dockerfiles usan builds en dos etapas para reducir el tamaño de las imágenes finales de producción.
 - **Nomenclatura en inglés**: todo el código interno (métodos, variables, funciones) está en inglés. Los campos del dominio de negocio (`nombre`, `apellido`, `fechaNacimiento`) se mantienen en español por ser parte del contrato definido en el challenge.
