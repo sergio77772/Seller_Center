@@ -43,6 +43,10 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ hashFiles('ms-a/**/*.gradle*') }}
 
+      - name: chmod gradlew executable
+        working-directory: ms-a
+        run: chmod +x gradlew
+
       - name: Run MS-A tests
         working-directory: ms-a
         env:
