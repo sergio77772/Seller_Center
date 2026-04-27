@@ -135,9 +135,10 @@ El BFF expone los mismos endpoints bajo `/bff/clientes`.
 
 | Servicio | URL |
 |---|---|
-| Frontend | _TODO_ |
-| MS-B (BFF) | _TODO_ |
-| MS-A + Swagger | _TODO_ |
+| Frontend | https://frontend-150317434723.us-central1.run.app |
+| MS-B (BFF) | https://ms-b-150317434723.us-central1.run.app |
+| MS-A + Swagger | https://ms-a-150317434723.us-central1.run.app/swagger-ui/index.html |
+
 
 ---
 
